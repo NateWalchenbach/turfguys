@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Gallery from "./components/Gallery";
 import {
   Grab as Grass,
@@ -10,9 +10,12 @@ import {
   Wrench,
   Home,
   CheckCircle,
+  Menu,
+  X,
 } from "lucide-react";
 
 function App() {
+  const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -61,17 +64,83 @@ function App() {
                 Contact
               </a>
             </div>
-            <button className="bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-lg font-semibold transition-colors shadow-lg">
-              Get Quote
-            </button>
+            <div className="flex items-center gap-3">
+              <a
+                href="#contact"
+                className="hidden md:inline-block bg-orange-500 hover:bg-orange-600 px-6 py-2 rounded-lg font-semibold transition-colors shadow-lg"
+              >
+                Get Quote
+              </a>
+              <button
+                aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
+                className="md:hidden p-2 rounded-lg border border-white/10 hover:bg-white/10"
+                onClick={() => setMobileOpen((v) => !v)}
+              >
+                {mobileOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
+          {/* Mobile menu */}
+          {mobileOpen && (
+            <div className="md:hidden pb-4 animate-in fade-in slide-in-from-top-2">
+              <div className="flex flex-col space-y-3 bg-gray-900 rounded-lg p-4">
+                <a
+                  href="#home"
+                  className="py-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Home
+                </a>
+                <a
+                  href="#services"
+                  className="py-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Services
+                </a>
+                <a
+                  href="#gallery"
+                  className="py-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Gallery
+                </a>
+                <a
+                  href="#about"
+                  className="py-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  About
+                </a>
+                <a
+                  href="#contact"
+                  className="py-2"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Contact
+                </a>
+                <a
+                  href="#contact"
+                  className="mt-2 bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg font-semibold text-center"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Get Quote
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
       <section
         id="home"
-        className="pt-20 bg-gradient-to-br from-green-50 to-orange-50 min-h-screen flex items-center"
+        className="pt-20 scroll-mt-24 bg-gradient-to-br from-green-50 to-orange-50 min-h-screen flex items-center"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -86,12 +155,18 @@ function App() {
                 workmanship that transforms your outdoor space.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg">
+                <a
+                  href="#contact"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors shadow-lg text-center"
+                >
                   Schedule Consultation
-                </button>
-                <button className="border-2 border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors">
+                </a>
+                <a
+                  href="#gallery"
+                  className="border-2 border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors text-center"
+                >
                   View Our Work
-                </button>
+                </a>
               </div>
             </div>
             <div className="relative">
@@ -114,7 +189,7 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-20 bg-white scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black mb-6">
@@ -202,7 +277,7 @@ function App() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-20 bg-black text-white scroll-mt-24" id="why-us">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">
@@ -253,14 +328,14 @@ function App() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery">
+      <section id="gallery" className="scroll-mt-24">
         <Gallery />
       </section>
 
       {/* About Section */}
       <section
         id="about"
-        className="py-20 bg-gradient-to-br from-gray-50 to-white"
+        className="py-20 bg-gradient-to-br from-gray-50 to-white scroll-mt-24"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -308,7 +383,7 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
+      <section id="contact" className="py-20 bg-white scroll-mt-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black mb-6">
@@ -328,14 +403,24 @@ function App() {
                   <Phone className="h-6 w-6 text-orange-400 mr-4" />
                   <div>
                     <p className="font-semibold">Phone</p>
-                    <p className="text-gray-300">(555) 123-TURF</p>
+                    <a
+                      className="text-gray-300 underline decoration-orange-400/30 hover:decoration-orange-400"
+                      href="tel:+15551238873"
+                    >
+                      (555) 123-TURF
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Mail className="h-6 w-6 text-orange-400 mr-4" />
                   <div>
                     <p className="font-semibold">Email</p>
-                    <p className="text-gray-300">hey@theturfguys.com</p>
+                    <a
+                      className="text-gray-300 underline decoration-orange-400/30 hover:decoration-orange-400"
+                      href="mailto:hey@theturfguys.com"
+                    >
+                      hey@theturfguys.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center">
