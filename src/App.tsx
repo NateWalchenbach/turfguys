@@ -138,7 +138,7 @@ function App() {
                 </h3>
               </div>
               <img
-                src="https://images.pexels.com/photos/2893532/pexels-photo-2893532.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="./public/photo2.webp"
                 alt="Artificial turf installation"
                 className="w-full h-48 object-cover rounded-xl mb-6"
               />
@@ -173,7 +173,7 @@ function App() {
                 </h3>
               </div>
               <img
-                src="https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="./public/photo3.webp "
                 alt="Professional landscaping"
                 className="w-full h-48 object-cover rounded-xl mb-6"
               />
