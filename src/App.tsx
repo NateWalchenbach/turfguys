@@ -96,7 +96,7 @@ function App() {
             </div>
             <div className="relative">
               <img
-                src="./public/LOGO_1-768x473.png"
+                src={`${import.meta.env.BASE_URL}Logo_1-768x473.png`}
                 alt="Beautiful artificial turf installation"
               />
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg">
@@ -138,7 +138,7 @@ function App() {
                 </h3>
               </div>
               <img
-                src="./public/photo2.webp"
+                src={`${import.meta.env.BASE_URL}photo2.webp`}
                 alt="Artificial turf installation"
                 className="w-full h-48 object-cover rounded-xl mb-6"
               />
@@ -173,7 +173,7 @@ function App() {
                 </h3>
               </div>
               <img
-                src="./public/photo3.webp "
+                src={`${import.meta.env.BASE_URL}photo3.webp`}
                 alt="Professional landscaping"
                 className="w-full h-48 object-cover rounded-xl mb-6"
               />
@@ -298,7 +298,7 @@ function App() {
             </div>
             <div className="relative">
               <img
-                src="../../public/photo1.webp"
+                src={`${import.meta.env.BASE_URL}photo1.webp`}
                 alt="Professional landscaping team at work"
                 className="rounded-2xl shadow-2xl w-full h-96 object-cover"
               />
